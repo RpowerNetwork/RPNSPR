@@ -3,8 +3,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { UploadCloud, Users, BarChart3, Target } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { UploadCloud, Users, BarChart3, Target, Check } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AgentsPage() {
@@ -24,7 +24,7 @@ export default function AgentsPage() {
                 </p>
                 <div className="flex gap-4">
                   <Button size="lg" asChild>
-                    <Link href="/dashboard">Get Started for Free</Link>
+                    <Link href="/auth/signup">Get Started for Free</Link>
                   </Button>
                   <Button size="lg" variant="outline">
                     Request a Demo
@@ -111,18 +111,74 @@ export default function AgentsPage() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-secondary">
+        <section id="pricing" className="py-16 md:py-24 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
-                Ready to Grow Your Business?
+                Choose the Plan That's Right for You
               </h2>
               <p className="mt-4 mx-auto text-lg text-muted-foreground">
-                Join thousands of successful agents across India who are transforming their business with Property SPR. Create your account today and list your first property for free.
+                Flexible plans for individual agents and large teams. Unlock more features and grow your business.
               </p>
-              <Button size="lg" className="mt-8" asChild>
-                <Link href="/dashboard">Sign Up Now</Link>
-              </Button>
+            </div>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="font-headline">Basic</CardTitle>
+                  <CardDescription>For individual agents getting started.</CardDescription>
+                  <p className="text-3xl font-bold pt-4">₹999<span className="text-sm font-normal text-muted-foreground">/month</span></p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> 20 Active Listings</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Basic Lead Generation</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Standard Support</li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                   <Button className="w-full" variant="outline" asChild>
+                    <Link href="/pricing?plan=basic">Choose Plan</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+              <Card className="border-primary scale-105 shadow-2xl">
+                <CardHeader>
+                  <CardTitle className="font-headline">Pro</CardTitle>
+                  <CardDescription>For professionals who want to accelerate growth.</CardDescription>
+                   <p className="text-3xl font-bold pt-4">₹2,499<span className="text-sm font-normal text-muted-foreground">/month</span></p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> 100 Active Listings</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Advanced Lead Generation</li>
+                     <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Powerful Analytics</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Priority Support</li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full" asChild>
+                    <Link href="/pricing?plan=pro">Choose Plan</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+              <Card>
+                 <CardHeader>
+                  <CardTitle className="font-headline">Enterprise</CardTitle>
+                  <CardDescription>For large teams and agencies.</CardDescription>
+                   <p className="text-3xl font-bold pt-4">Custom</p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                   <ul className="space-y-2">
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Unlimited Listings</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Dedicated Account Manager</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> Custom Branding</li>
+                    <li className="flex items-center gap-2"><Check className="text-primary h-5 w-5" /> API Access</li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full" variant="outline">Contact Sales</Button>
+                </CardFooter>
+              </Card>
             </div>
           </div>
         </section>
@@ -132,5 +188,3 @@ export default function AgentsPage() {
     </div>
   );
 }
-
-    
