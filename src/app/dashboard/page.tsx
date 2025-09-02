@@ -1,0 +1,188 @@
+'use client';
+import {
+  Activity,
+  ArrowUpRight,
+  Building2,
+  DollarSign,
+  Users,
+} from 'lucide-react';
+import Link from 'next/link';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+
+const chartData = [
+  { month: 'January', views: 186 },
+  { month: 'February', views: 305 },
+  { month: 'March', views: 237 },
+  { month: 'April', views: 273 },
+  { month: 'May', views: 209 },
+  { month: 'June', views: 214 },
+];
+
+const chartConfig = {
+  views: {
+    label: 'Views',
+    color: 'hsl(var(--primary))',
+  },
+};
+
+export default function DashboardPage() {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Gross Revenue
+            </CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">$45,231.89</div>
+            <p className="text-xs text-muted-foreground">
+              +20.1% from last month
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">New Leads</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">+23</div>
+            <p className="text-xs text-muted-foreground">
+              +180.1% from last month
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Properties Listed</CardTitle>
+            <Building2 className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">12</div>
+            <p className="text-xs text-muted-foreground">+2 from last month</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+            <Activity className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">+573</div>
+            <p className="text-xs text-muted-foreground">
+              +201 since last hour
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-7">
+        <Card className="xl:col-span-4">
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <ChartContainer config={chartConfig} className="h-[300px] w-full">
+              <BarChart accessibilityLayer data={chartData}>
+                <CartesianGrid vertical={false} />
+                <XAxis
+                  dataKey="month"
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                  tickFormatter={(value) => value.slice(0, 3)}
+                />
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent indicator="dot" />}
+                />
+                <Bar dataKey="views" fill="var(--color-views)" radius={4} />
+              </BarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+        <Card className="xl:col-span-3">
+          <CardHeader>
+            <CardTitle>Recent Inquiries</CardTitle>
+            <CardDescription>
+              You got 5 new inquiries this week.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-8">
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden h-9 w-9 sm:flex">
+                <AvatarImage src="https://picsum.photos/100?random=11" alt="Avatar" data-ai-hint="person smiling" />
+                <AvatarFallback>OM</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium leading-none">
+                  Olivia Martin
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  olivia.martin@email.com
+                </p>
+              </div>
+              <div className="ml-auto font-medium">+$1,999.00</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden h-9 w-9 sm:flex">
+                <AvatarImage src="https://picsum.photos/100?random=12" alt="Avatar" data-ai-hint="man portrait"/>
+                <AvatarFallback>JL</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium leading-none">
+                  Jackson Lee
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  jackson.lee@email.com
+                </p>
+              </div>
+              <div className="ml-auto font-medium">+39.00</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden h-9 w-9 sm:flex">
+                <AvatarImage src="https://picsum.photos/100?random=13" alt="Avatar" data-ai-hint="woman portrait"/>
+                <AvatarFallback>IN</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium leading-none">
+                  Isabella Nguyen
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  isabella.nguyen@email.com
+                </p>
+              </div>
+              <div className="ml-auto font-medium">+$299.00</div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
