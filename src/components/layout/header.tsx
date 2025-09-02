@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -64,13 +65,17 @@ export function Header() {
           </>
         ) : (
           <>
-            <DropdownMenuItem onClick={() => setIsLoggedIn(true)}>
-              <LogIn className="mr-2 h-4 w-4" />
-              <span>Sign In</span>
+            <DropdownMenuItem asChild>
+              <Link href="/auth/signin" className='w-full'>
+                  <LogIn className="mr-2 h-4 w-4" />
+                  <span>Sign In</span>
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <UserPlus className="mr-2 h-4 w-4" />
-              <span>Sign Up</span>
+            <DropdownMenuItem asChild>
+              <Link href="/auth/signup" className='w-full'>
+                <UserPlus className="mr-2 h-4 w-4" />
+                <span>Sign Up</span>
+              </Link>
             </DropdownMenuItem>
           </>
         )}
