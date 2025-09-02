@@ -43,7 +43,7 @@ export function PropertyCard({
     : `₹${price.toLocaleString('en-IN')}`;
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col h-full">
+    <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col h-full bg-card">
       <CardHeader className="p-0 relative">
         <Image
           src={imageUrl}
@@ -62,7 +62,7 @@ export function PropertyCard({
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-3 left-3 bg-white/80 hover:bg-white rounded-full text-muted-foreground hover:text-red-500"
+          className="absolute top-3 left-3 bg-card/80 hover:bg-card rounded-full text-muted-foreground hover:text-red-500"
         >
           <Heart className="h-5 w-5" />
           <span className="sr-only">Favorite</span>

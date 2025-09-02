@@ -214,7 +214,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-16 md:py-24 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
@@ -251,7 +251,7 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="flex flex-col bg-secondary/30 border-0">
+                <Card key={testimonial.name} className="flex flex-col bg-secondary border-0">
                   <CardContent className="pt-6 flex-grow">
                     <div className="flex items-start">
                       <Avatar className="h-12 w-12 mr-4">

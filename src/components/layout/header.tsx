@@ -42,7 +42,7 @@ export function Header() {
   const UserMenu = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={isLoggedIn ? "outline" : "default"}>
+        <Button variant={"outline"}>
          {isLoggedIn ? "My Account" : "Login"}
          {isLoggedIn && <ChevronDown className="h-4 w-4" />}
         </Button>
@@ -148,7 +148,7 @@ export function Header() {
           </nav>
         )}
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button variant="outline" className="hidden md:flex">List a Property</Button>
+          <Button className="hidden md:flex">List a Property</Button>
           <div className="hidden md:block">
             <UserMenu />
           </div>
