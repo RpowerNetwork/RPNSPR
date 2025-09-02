@@ -17,6 +17,13 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PropertyCard } from '@/components/property-card';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const featuredProperties = [
   {
@@ -125,15 +132,20 @@ export default function HomePage() {
                     className="pl-10 text-base h-12"
                   />
                 </div>
-                <div className="relative">
-                  <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <select className="flex h-12 w-full md:w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 pl-10 text-base text-foreground ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                    <option>All Types</option>
-                    <option>Apartment</option>
-                    <option>House</option>
-                    <option>Villa</option>
-                    <option>Office</option>
-                  </select>
+                <div className="relative w-full md:w-48">
+                  <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
+                  <Select>
+                    <SelectTrigger className="pl-10 text-base h-12">
+                      <SelectValue placeholder="All Types" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Types</SelectItem>
+                      <SelectItem value="apartment">Apartment</SelectItem>
+                      <SelectItem value="house">House</SelectItem>
+                      <SelectItem value="villa">Villa</SelectItem>
+                      <SelectItem value="office">Office</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <Button size="lg" className="h-12 w-full md:w-auto text-base">
                   <Search className="mr-2 h-5 w-5" />
