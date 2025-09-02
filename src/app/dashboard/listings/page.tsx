@@ -24,37 +24,37 @@ const properties = [
     id: 'prop1',
     name: 'Sunnyvale Apartment',
     status: 'Published',
-    price: 2500,
+    price: 207500,
     inquiries: 12,
     image: 'https://picsum.photos/100?random=21',
-    imageHint: 'apartment exterior',
+    imageHint: 'apartment exterior india',
   },
   {
     id: 'prop2',
     name: 'Downtown Office Space',
     status: 'Draft',
-    price: 8000,
+    price: 664000,
     inquiries: 0,
     image: 'https://picsum.photos/100?random=22',
-    imageHint: 'office building',
+    imageHint: 'office building india',
   },
   {
     id: 'prop3',
     name: 'Lakeside Villa',
     status: 'Expired',
-    price: 1200000,
+    price: 99600000,
     inquiries: 45,
     image: 'https://picsum.photos/100?random=23',
-    imageHint: 'luxury villa',
+    imageHint: 'luxury villa india',
   },
   {
     id: 'prop4',
     name: 'Retail Storefront',
     status: 'Published',
-    price: 5500,
+    price: 456500,
     inquiries: 2,
     image: 'https://picsum.photos/100?random=24',
-    imageHint: 'storefront',
+    imageHint: 'storefront india',
   },
 ];
 
@@ -121,9 +121,9 @@ export default function ListingsPage() {
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
-                    {property.price.toLocaleString('en-US', {
+                    {property.price.toLocaleString('en-IN', {
                       style: 'currency',
-                      currency: 'USD',
+                      currency: 'INR',
                       minimumFractionDigits: 0,
                     })}
                   </TableCell>

@@ -22,10 +22,10 @@ const featuredProperties = [
   {
     id: '1',
     title: 'Modern Downtown Loft',
-    location: 'Miami, FL',
-    price: 450000,
+    location: 'Mumbai, MH',
+    price: 37350000,
     imageUrl: 'https://picsum.photos/600/400?random=1',
-    imageHint: 'modern apartment',
+    imageHint: 'modern apartment india',
     beds: 2,
     baths: 2,
     area: 1200,
@@ -34,10 +34,10 @@ const featuredProperties = [
   {
     id: '2',
     title: 'Suburban Family Home',
-    location: 'Orlando, FL',
-    price: 2500,
+    location: 'Bengaluru, KA',
+    price: 207500,
     imageUrl: 'https://picsum.photos/600/400?random=2',
-    imageHint: 'suburban house',
+    imageHint: 'suburban house india',
     beds: 4,
     baths: 3,
     area: 2500,
@@ -46,10 +46,10 @@ const featuredProperties = [
   {
     id: '3',
     title: 'Luxury Beachfront Villa',
-    location: 'Malibu, CA',
-    price: 3200000,
+    location: 'Goa',
+    price: 265600000,
     imageUrl: 'https://picsum.photos/600/400?random=3',
-    imageHint: 'luxury villa',
+    imageHint: 'luxury villa india',
     beds: 5,
     baths: 5,
     area: 4500,
@@ -58,10 +58,10 @@ const featuredProperties = [
   {
     id: '4',
     title: 'Cozy Studio Apartment',
-    location: 'New York, NY',
-    price: 3000,
+    location: 'New Delhi, DL',
+    price: 249000,
     imageUrl: 'https://picsum.photos/600/400?random=4',
-    imageHint: 'studio apartment',
+    imageHint: 'studio apartment india',
     beds: 1,
     baths: 1,
     area: 500,
@@ -71,25 +71,25 @@ const featuredProperties = [
 
 const testimonials = [
   {
-    name: 'Sarah L.',
+    name: 'Priya S.',
     role: 'Home Buyer',
     avatarUrl: 'https://picsum.photos/100/100?random=5',
-    imageHint: 'woman portrait',
-    text: 'Property SPR made finding our dream home a breeze! The map view and neighborhood insights were incredibly helpful.',
+    imageHint: 'woman portrait india',
+    text: 'Property SPR made finding our dream home in Bangalore a breeze! The map view and neighborhood insights were incredibly helpful.',
   },
   {
-    name: 'Michael B.',
+    name: 'Rohan M.',
     role: 'Real Estate Agent',
     avatarUrl: 'https://picsum.photos/100/100?random=6',
-    imageHint: 'man portrait',
-    text: "The agent dashboard is a game-changer. I can manage all my listings and track leads efficiently. Highly recommended!",
+    imageHint: 'man portrait india',
+    text: "The agent dashboard is a game-changer. I can manage all my listings in Mumbai and track leads efficiently. Highly recommended!",
   },
   {
-    name: 'Jessica P.',
+    name: 'Aisha K.',
     role: 'Renter',
     avatarUrl: 'https://picsum.photos/100/100?random=7',
-    imageHint: 'person smiling',
-    text: "I found the perfect rental in just a few days. The shortlisting and comparison tools saved me so much time.",
+    imageHint: 'person smiling india',
+    text: "I found the perfect rental in Delhi in just a few days. The shortlisting and comparison tools saved me so much time.",
   },
 ];
 
@@ -102,19 +102,19 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-black/50 z-10" />
           <Image
             src="https://picsum.photos/1920/1080"
-            alt="Hero background image of a modern city skyline"
-            data-ai-hint="modern city"
+            alt="Hero background image of a modern Indian city skyline"
+            data-ai-hint="modern city india"
             fill
             className="object-cover"
             priority
           />
           <div className="relative z-20 flex flex-col items-center px-4">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-shadow-lg">
-              Find Your Next Property
+              Find Your Next Property in India
             </h1>
             <p className="max-w-2xl text-lg md:text-xl text-neutral-200 mb-8">
               The best place to find your dream home, rental, or commercial
-              space.
+              space in India.
             </p>
             <div className="w-full max-w-2xl bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl">
               <form className="flex flex-col md:flex-row gap-2">
@@ -122,7 +122,7 @@ export default function HomePage() {
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     type="text"
-                    placeholder="Enter location, city, or landmark"
+                    placeholder="Enter location, city, or landmark in India"
                     className="pl-10 text-base"
                   />
                 </div>

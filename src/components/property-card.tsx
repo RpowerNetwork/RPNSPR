@@ -39,8 +39,8 @@ export function PropertyCard({
 }: PropertyCardProps) {
   const isForRent = type === 'For Rent';
   const priceDisplay = isForRent
-    ? `$${price.toLocaleString()}/month`
-    : `$${price.toLocaleString()}`;
+    ? `₹${price.toLocaleString('en-IN')}/month`
+    : `₹${price.toLocaleString('en-IN')}`;
 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
