@@ -79,7 +79,7 @@ export default function LeadsPage() {
           case 'Closed': return 'destructive';
           default: return 'outline';
         }
-      };
+    };
       
   return (
     <Tabs defaultValue="all">
@@ -161,7 +161,7 @@ export default function LeadsPage() {
                             <div className="hidden text-sm text-muted-foreground md:inline">{lead.email}</div>
                         </TableCell>
                         <TableCell>
-                            <Badge variant={getBadgeVariant(lead.status)}>{lead.status}</Badge>
+                            <Badge variant={getBadgeVariant(lead.status) as any}>{lead.status}</Badge>
                         </TableCell>
                         <TableCell className="hidden md:table-cell">{lead.property}</TableCell>
                         <TableCell className="hidden md:table-cell">{lead.date}</TableCell>
