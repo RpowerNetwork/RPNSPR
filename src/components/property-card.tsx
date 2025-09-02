@@ -43,7 +43,7 @@ export function PropertyCard({
     : `₹${price.toLocaleString('en-IN')}`;
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
+    <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col h-full">
       <CardHeader className="p-0 relative">
         <Image
           src={imageUrl}
@@ -68,19 +68,19 @@ export function PropertyCard({
           <span className="sr-only">Favorite</span>
         </Button>
       </CardHeader>
-      <CardContent className="p-4">
-        <CardTitle className="text-lg leading-tight mb-1">{title}</CardTitle>
+      <CardContent className="p-4 flex-grow">
+        <CardTitle className="text-lg leading-tight mb-1 font-headline">{title}</CardTitle>
         <CardDescription className="text-sm mb-4">{location}</CardDescription>
-        <div className="flex justify-between items-center text-sm text-muted-foreground">
-          <div className="flex items-center gap-1">
+        <div className="flex justify-between items-center text-sm text-muted-foreground pt-2">
+          <div className="flex items-center gap-1.5">
             <BedDouble className="h-4 w-4" />
             <span>{beds} Beds</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <Bath className="h-4 w-4" />
             <span>{baths} Baths</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <SquareGanttChart className="h-4 w-4" />
             <span>{area} sqft</span>
           </div>
@@ -88,7 +88,7 @@ export function PropertyCard({
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
         <p className="text-xl font-bold text-primary">{priceDisplay}</p>
-        <Button variant="outline">View Details</Button>
+        <Button>View Details</Button>
       </CardFooter>
     </Card>
   );

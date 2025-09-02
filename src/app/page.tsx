@@ -12,7 +12,7 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PropertyCard } from '@/components/property-card';
 import { Header } from '@/components/layout/header';
@@ -98,10 +98,10 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center text-center text-white">
-          <div className="absolute inset-0 bg-black/50 z-10" />
+        <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center text-center text-white">
+          <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
-            src="https://picsum.photos/1920/1080"
+            src="https://picsum.photos/1920/1080?random=10"
             alt="Hero background image of a modern Indian city skyline"
             data-ai-hint="modern city india"
             fill
@@ -109,26 +109,25 @@ export default function HomePage() {
             priority
           />
           <div className="relative z-20 flex flex-col items-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-shadow-lg">
-              Find Your Next Property in India
+            <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tight mb-4 text-shadow-lg">
+              Find Your Perfect Property
             </h1>
             <p className="max-w-2xl text-lg md:text-xl text-neutral-200 mb-8">
-              The best place to find your dream home, rental, or commercial
-              space in India.
+              Discover a seamless way to buy, rent, and sell properties across India.
             </p>
-            <div className="w-full max-w-2xl bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl">
+            <div className="w-full max-w-3xl bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl">
               <form className="flex flex-col md:flex-row gap-2">
                 <div className="relative flex-grow">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     type="text"
                     placeholder="Enter location, city, or landmark in India"
-                    className="pl-10 text-base"
+                    className="pl-10 text-base h-12"
                   />
                 </div>
                 <div className="relative">
                   <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <select className="flex h-10 w-full md:w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 pl-10 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                  <select className="flex h-12 w-full md:w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 pl-10 text-base text-foreground ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                     <option>All Types</option>
                     <option>Apartment</option>
                     <option>House</option>
@@ -136,7 +135,7 @@ export default function HomePage() {
                     <option>Office</option>
                   </select>
                 </div>
-                <Button size="lg" className="w-full md:w-auto">
+                <Button size="lg" className="h-12 w-full md:w-auto text-base">
                   <Search className="mr-2 h-5 w-5" />
                   Search
                 </Button>
@@ -148,7 +147,7 @@ export default function HomePage() {
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-foreground">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
                 Why Choose Property SPR?
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -157,12 +156,12 @@ export default function HomePage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="text-center">
+              <Card className="text-center border-0 shadow-none">
                 <CardHeader>
-                  <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
-                    <ShieldCheck className="h-8 w-8" />
+                  <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
+                    <ShieldCheck className="h-10 w-10" />
                   </div>
-                  <CardTitle className="mt-4">Verified Listings</CardTitle>
+                  <CardTitle className="mt-4 font-headline">Verified Listings</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -171,12 +170,12 @@ export default function HomePage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              <Card className="text-center border-0 shadow-none">
                 <CardHeader>
-                  <div className="mx-auto bg-secondary/10 text-secondary p-3 rounded-full w-fit">
-                    <Award className="h-8 w-8" />
+                  <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
+                    <Award className="h-10 w-10" />
                   </div>
-                  <CardTitle className="mt-4">Advanced Filters</CardTitle>
+                  <CardTitle className="mt-4 font-headline">Advanced Filters</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -185,12 +184,12 @@ export default function HomePage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              <Card className="text-center border-0 shadow-none">
                 <CardHeader>
-                  <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
-                    <BarChart className="h-8 w-8" />
+                  <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
+                    <BarChart className="h-10 w-10" />
                   </div>
-                  <CardTitle className="mt-4">Market Analytics</CardTitle>
+                  <CardTitle className="mt-4 font-headline">Market Analytics</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -203,10 +202,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-muted/30">
+        <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-foreground">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
                 Featured Properties
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -220,7 +219,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Button size="lg" variant="outline">
+              <Button size="lg">
                 View All Properties
               </Button>
             </div>
@@ -230,7 +229,7 @@ export default function HomePage() {
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-foreground">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
                 What Our Clients Say
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -238,9 +237,9 @@ export default function HomePage() {
                 Property SPR.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="flex flex-col">
+                <Card key={testimonial.name} className="flex flex-col bg-secondary/30 border-0">
                   <CardContent className="pt-6 flex-grow">
                     <div className="flex items-start">
                       <Avatar className="h-12 w-12 mr-4">
@@ -259,15 +258,17 @@ export default function HomePage() {
                         </p>
                       </div>
                     </div>
-                    <p className="mt-4 text-muted-foreground">
+                    <p className="mt-4 text-muted-foreground italic">
                       "{testimonial.text}"
                     </p>
                   </CardContent>
-                  <div className="p-6 pt-0 flex text-secondary">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-current" />
-                    ))}
-                  </div>
+                  <CardFooter className="p-6 pt-0">
+                    <div className="flex text-yellow-500">
+                        {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-current" />
+                        ))}
+                    </div>
+                  </CardFooter>
                 </Card>
               ))}
             </div>

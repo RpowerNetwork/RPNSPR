@@ -33,7 +33,6 @@ const navLinks = [
   { href: '/buy', label: 'Buy' },
   { href: '/rent', label: 'Rent' },
   { href: '/agents', label: 'For Agents' },
-  { href: '/dashboard', label: 'Dashboard' },
 ];
 
 export function Header() {
@@ -43,9 +42,9 @@ export function Header() {
   const UserMenu = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-          My Account
-          <ChevronDown className="h-4 w-4" />
+        <Button variant={isLoggedIn ? "outline" : "default"}>
+         {isLoggedIn ? "My Account" : "Login"}
+         {isLoggedIn && <ChevronDown className="h-4 w-4" />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -106,19 +105,25 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+           <Link
+              href={'/dashboard'}
+              className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Dashboard
+            </Link>
         </div>
-        <Button className="w-full">List a Property</Button>
+        <Button className="w-full" variant="outline">List a Property</Button>
       </SheetContent>
     </Sheet>
   );
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 flex">
+      <div className="container flex h-20 items-center">
+        <div className="mr-8 flex">
           <Link href="/" className="flex items-center space-x-2">
-            <Icons.logo className="h-6 w-6" />
-            <span className="hidden font-bold sm:inline-block">
+            <Icons.logo className="h-8 w-8" />
+            <span className="hidden font-bold sm:inline-block text-lg">
               Property SPR
             </span>
           </Link>
@@ -129,15 +134,21 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="transition-colors hover:text-primary text-foreground/80 text-base"
               >
                 {link.label}
               </Link>
             ))}
+             <Link
+                href={'/dashboard'}
+                className="transition-colors hover:text-primary text-foreground/60 text-base"
+              >
+                Dashboard
+              </Link>
           </nav>
         )}
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button className="hidden md:flex">List a Property</Button>
+          <Button variant="outline" className="hidden md:flex">List a Property</Button>
           <div className="hidden md:block">
             <UserMenu />
           </div>
