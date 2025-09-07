@@ -11,28 +11,21 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M3 8L6 5L9 8"
+        d="M12 2L2 7L12 12L22 7L12 2Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M3 16L6 19L9 16"
+        d="M2 17L12 22L22 17"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M6 5V19"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12.5 19V5L19 19V5"
+        d="M2 12L12 17L22 12"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
