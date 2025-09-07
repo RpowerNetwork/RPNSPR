@@ -59,7 +59,7 @@ export default function DashboardLayout({
             className="flex items-center gap-2 overflow-hidden whitespace-nowrap"
           >
             <Icons.logo className="size-6 shrink-0" />
-            <span className="text-lg font-semibold">Property SPR</span>
+            <span className="text-lg font-semibold">RPNSPR</span>
           </Link>
         </SidebarHeader>
         <SidebarContent>

@@ -37,7 +37,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
               <Icons.logo className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl">Property SPR</span>
+              <span className="font-bold text-xl">RPNSPR</span>
             </Link>
             <p className="mt-4 text-muted-foreground max-w-xs">
               Your trusted partner in finding the perfect property.
@@ -79,7 +79,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Property SPR. All rights reserved.
+            &copy; {new Date().getFullYear()} RPNSPR. All rights reserved.
           </p>
         </div>
       </div>

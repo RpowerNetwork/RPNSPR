@@ -96,7 +96,7 @@ export function Header() {
           <SheetTitle asChild>
             <Link href="/" className="flex items-center gap-2">
               <Icons.logo className="h-6 w-6" />
-              <span className="font-bold">Property SPR</span>
+              <span className="font-bold">RPNSPR</span>
             </Link>
           </SheetTitle>
         </SheetHeader>
@@ -129,7 +129,7 @@ export function Header() {
           <Link href="/" className="flex items-center space-x-2">
             <Icons.logo className="h-8 w-8" />
             <span className="hidden font-bold sm:inline-block text-lg">
-              Property SPR
+              RPNSPR
             </span>
           </Link>
         </div>

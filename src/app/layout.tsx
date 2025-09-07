@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Property SPR',
-  description: 'Find your next property with Property SPR',
+  title: 'RPNSPR',
+  description: 'Find your next property with RPNSPR',
 };
 
 export default function RootLayout({

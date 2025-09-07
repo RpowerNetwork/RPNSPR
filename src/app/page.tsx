@@ -83,7 +83,7 @@ const testimonials = [
     role: 'Home Buyer',
     avatarUrl: 'https://picsum.photos/100/100?random=5',
     imageHint: 'woman portrait india',
-    text: 'Property SPR made finding our dream home in Bangalore a breeze! The map view and neighborhood insights were incredibly helpful.',
+    text: 'RPNSPR made finding our dream home in Bangalore a breeze! The map view and neighborhood insights were incredibly helpful.',
   },
   {
     name: 'Rohan M.',
@@ -164,7 +164,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight">
-                Why Choose Property SPR?
+                Why Choose RPNSPR?
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 We provide the tools and insights you need for a seamless
@@ -250,7 +250,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 Hear from satisfied buyers, sellers, and agents who trust
-                Property SPR.
+                RPNSPR.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -295,5 +295,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
