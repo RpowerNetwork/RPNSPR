@@ -142,6 +142,9 @@ export default function RentPage() {
                         <SelectItem value="house">Independent House/Villa</SelectItem>
                         <SelectItem value="pg">PG/Co-living</SelectItem>
                         <SelectItem value="room">Room</SelectItem>
+                        <SelectItem value="office">Office Space</SelectItem>
+                        <SelectItem value="shop">Shop/Showroom</SelectItem>
+                        <SelectItem value="godown">Godown/Warehouse</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>

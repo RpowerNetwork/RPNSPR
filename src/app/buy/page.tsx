@@ -143,6 +143,9 @@ export default function BuyPage() {
                         <SelectItem value="house">Independent House/Villa</SelectItem>
                         <SelectItem value="plot">Plot/Land</SelectItem>
                         <SelectItem value="farmhouse">Farmhouse</SelectItem>
+                        <SelectItem value="office">Office Space</SelectItem>
+                        <SelectItem value="shop">Shop/Showroom</SelectItem>
+                        <SelectItem value="godown">Godown/Warehouse</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>

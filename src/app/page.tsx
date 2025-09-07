@@ -133,7 +133,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="relative w-full md:w-48">
-                  <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
+                  <Building className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
                   <Select>
                     <SelectTrigger className="pl-10 text-base h-12">
                       <SelectValue placeholder="All Types" />
@@ -144,6 +144,8 @@ export default function HomePage() {
                       <SelectItem value="house">House</SelectItem>
                       <SelectItem value="villa">Villa</SelectItem>
                       <SelectItem value="office">Office</SelectItem>
+                      <SelectItem value="shop">Shop</SelectItem>
+                      <SelectItem value="godown">Godown</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
