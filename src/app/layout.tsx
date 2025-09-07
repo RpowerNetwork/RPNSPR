@@ -3,6 +3,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { Poppins } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -33,6 +36,8 @@ export default function RootLayout({
       <body className={cn('font-body antialiased min-h-screen bg-background', poppins.variable)}>
         {children}
         <Toaster />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
