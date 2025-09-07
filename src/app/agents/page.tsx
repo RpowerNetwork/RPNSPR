@@ -121,7 +121,7 @@ export default function AgentsPage() {
                 Flexible plans for individual agents and large teams. Unlock more features and grow your business.
               </p>
             </div>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
               <Card>
                 <CardHeader>
                   <CardTitle className="font-headline">Basic</CardTitle>
@@ -176,7 +176,9 @@ export default function AgentsPage() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full" variant="outline">Contact Sales</Button>
+                  <Button className="w-full" variant="outline" asChild>
+                    <Link href="/pricing?plan=enterprise">Contact Sales</Link>
+                  </Button>
                 </CardFooter>
               </Card>
             </div>
@@ -188,3 +190,5 @@ export default function AgentsPage() {
     </div>
   );
 }
+
+    
