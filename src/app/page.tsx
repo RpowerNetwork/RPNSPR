@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import {
   Search,
@@ -143,6 +144,7 @@ export default function HomePage() {
                       <SelectItem value="apartment">Apartment</SelectItem>
                       <SelectItem value="house">House</SelectItem>
                       <SelectItem value="villa">Villa</SelectItem>
+                      <SelectItem value="plot">Plot</SelectItem>
                       <SelectItem value="office">Office</SelectItem>
                       <SelectItem value="shop">Shop</SelectItem>
                       <SelectItem value="godown">Godown</SelectItem>
@@ -293,3 +295,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
