@@ -15,8 +15,8 @@ import {
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Calendar as CalendarIcon, Users, HandCoins, Eye } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis, Line, LineChart, Pie, PieChart, Sector } from "recharts"
+import { Calendar as CalendarIcon, Users, HandCoins, Eye, LineChart as LineChartIcon } from "lucide-react"
+import { Bar, BarChart, CartesianGrid, XAxis, Line, LineChart, Pie, PieChart } from "recharts"
 import { useState } from "react"
 import { addDays, format } from "date-fns"
 import type { DateRange } from "react-day-picker"
@@ -47,7 +47,7 @@ const leadSourceData = [
 export default function AnalyticsPage() {
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(2024, 6, 1),
-    to: addDays(new Date(2024, 6, 1), 6),
+    to: addDays(new Date(2024, 6, 1), 29),
   })
 
   return (
@@ -56,7 +56,7 @@ export default function AnalyticsPage() {
         <div>
           <h2 className="text-2xl font-bold tracking-tight">Analytics Dashboard</h2>
           <p className="text-muted-foreground">
-            In-depth metrics and insights for your listings.
+            In-depth metrics and insights for your platform.
           </p>
         </div>
         <Popover>
@@ -93,35 +93,45 @@ export default function AnalyticsPage() {
           </Popover>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Views</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Site Views</CardTitle>
             <Eye className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,250,345</div>
-            <p className="text-xs text-muted-foreground">+12% from last period</p>
+            <div className="text-2xl font-bold">12,250,345</div>
+            <p className="text-xs text-muted-foreground">+22% from last period</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Leads</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Users</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,432</div>
-            <p className="text-xs text-muted-foreground">+8.2% from last period</p>
+            <div className="text-2xl font-bold">11,432</div>
+            <p className="text-xs text-muted-foreground">+18.2% from last period</p>
+          </CardContent>
+        </Card>
+         <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Leads Generated</CardTitle>
+            <HandCoins className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">5,432</div>
+            <p className="text-xs text-muted-foreground">+10.5% from last period</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
-            <HandCoins className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">User Growth</CardTitle>
+            <LineChartIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">0.11%</div>
-            <p className="text-xs text-muted-foreground">-0.5% from last period</p>
+            <div className="text-2xl font-bold">+1,200</div>
+            <p className="text-xs text-muted-foreground">+5.1% this month</p>
           </CardContent>
         </Card>
       </div>
@@ -129,7 +139,7 @@ export default function AnalyticsPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
         <Card className="lg:col-span-3">
           <CardHeader>
-            <CardTitle>Page Views Over Time</CardTitle>
+            <CardTitle>Platform Views Over Time</CardTitle>
             <CardDescription>Desktop vs. Mobile views for the selected period.</CardDescription>
           </CardHeader>
           <CardContent>

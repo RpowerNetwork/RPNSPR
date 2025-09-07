@@ -1,4 +1,4 @@
-import { File, ListFilter, PlusCircle } from 'lucide-react';
+import { File, ListFilter, MessageSquare, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -26,152 +26,218 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 
-const leads = [
-    {
-        id: "lead1",
-        name: "John Doe",
-        email: "john.d@example.com",
-        property: "Sunnyvale Apartment",
-        status: "New",
-        date: "2023-06-23",
-        avatar: "https://picsum.photos/100?random=31",
-        avatarHint: "man portrait"
-    },
-    {
-        id: "lead2",
-        name: "Jane Smith",
-        email: "jane.s@example.com",
-        property: "Lakeside Villa",
-        status: "Contacted",
-        date: "2023-06-22",
-        avatar: "https://picsum.photos/100?random=32",
-        avatarHint: "woman smiling"
-    },
-    {
-        id: "lead3",
-        name: "Sam Wilson",
-        email: "sam.w@example.com",
-        property: "Retail Storefront",
-        status: "Visit Scheduled",
-        date: "2023-06-21",
-        avatar: "https://picsum.photos/100?random=33",
-        avatarHint: "person smiling"
-    },
-    {
-        id: "lead4",
-        name: "Alice Johnson",
-        email: "alice.j@example.com",
-        property: "Lakeside Villa",
-        status: "Closed",
-        date: "2023-06-20",
-        avatar: "https://picsum.photos/100?random=34",
-        avatarHint: "woman portrait"
-    },
-]
+const users = [
+  {
+    id: 'user1',
+    name: 'Priya Sharma',
+    email: 'priya.sharma@example.com',
+    role: 'Agent',
+    status: 'Active',
+    joined: '2023-01-15',
+    avatar: 'https://picsum.photos/100?random=31',
+    avatarHint: 'woman portrait',
+  },
+  {
+    id: 'user2',
+    name: 'Rohan Mehta',
+    email: 'rohan.mehta@example.com',
+    role: 'Buyer',
+    status: 'Active',
+    joined: '2023-02-20',
+    avatar: 'https://picsum.photos/100?random=32',
+    avatarHint: 'man smiling',
+  },
+  {
+    id: 'user3',
+    name: 'Sonia Gupta',
+    email: 'sonia.gupta@example.com',
+    role: 'Renter',
+    status: 'Inactive',
+    joined: '2023-03-10',
+    avatar: 'https://picsum.photos/100?random=33',
+    avatarHint: 'person portrait',
+  },
+  {
+    id: 'user4',
+    name: 'Amit Patel',
+    email: 'amit.patel@example.com',
+    role: 'Agent',
+    status: 'Active',
+    joined: '2023-04-05',
+    avatar: 'https://picsum.photos/100?random=34',
+    avatarHint: 'man portrait india',
+  },
+  {
+    id: 'user5',
+    name: 'Neha Singh',
+    email: 'neha.singh@example.com',
+    role: 'Buyer',
+    status: 'Active',
+    joined: '2023-05-21',
+    avatar: 'https://picsum.photos/100?random=35',
+    avatarHint: 'woman smiling india',
+  },
+];
 
-export default function LeadsPage() {
-    const getBadgeVariant = (status: string) => {
-        switch (status) {
-          case 'New': return 'default';
-          case 'Contacted': return 'secondary';
-          case 'Visit Scheduled': return 'outline';
-          case 'Closed': return 'destructive';
-          default: return 'outline';
-        }
-    };
-      
+export default function UsersPage() {
+  const getBadgeVariant = (status: string) => {
+    switch (status) {
+      case 'Active':
+        return 'default';
+      case 'Inactive':
+        return 'secondary';
+      default:
+        return 'outline';
+    }
+  };
+
   return (
-    <Tabs defaultValue="all">
-      <div className="flex items-center">
-        <TabsList>
-          <TabsTrigger value="all">All</TabsTrigger>
-          <TabsTrigger value="new">New</TabsTrigger>
-          <TabsTrigger value="contacted">Contacted</TabsTrigger>
-          <TabsTrigger value="closed" className="hidden sm:flex">
-            Closed
-          </TabsTrigger>
-        </TabsList>
-        <div className="ml-auto flex items-center gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-8 gap-1">
-                <ListFilter className="h-3.5 w-3.5" />
+    <div className="grid gap-6 md:grid-cols-3">
+      <div className="md:col-span-2">
+        <Tabs defaultValue="all">
+          <div className="flex items-center">
+            <TabsList>
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="agent">Agents</TabsTrigger>
+              <TabsTrigger value="buyer">Buyers</TabsTrigger>
+              <TabsTrigger value="renter">Renters</TabsTrigger>
+            </TabsList>
+            <div className="ml-auto flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="h-8 gap-1">
+                    <ListFilter className="h-3.5 w-3.5" />
+                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                      Filter
+                    </span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Filter by Status</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem checked>
+                    Active
+                  </DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Inactive</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button size="sm" variant="outline" className="h-8 gap-1">
+                <File className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Filter
+                  Export
                 </span>
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Filter by</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem checked>
-                New
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>Contacted</DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>
-                Visit Scheduled
-              </DropdownMenuCheckboxItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Button size="sm" variant="outline" className="h-8 gap-1">
-            <File className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Export
-            </span>
-          </Button>
-        </div>
+            </div>
+          </div>
+          <TabsContent value="all">
+            <Card>
+              <CardHeader>
+                <CardTitle>Users</CardTitle>
+                <CardDescription>
+                  Manage all users on the platform.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Customer</TableHead>
+                      <TableHead>Role</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Joined Date
+                      </TableHead>
+                      <TableHead>
+                        <span className="sr-only">Actions</span>
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {users.map((user) => (
+                      <TableRow key={user.id}>
+                        <TableCell>
+                          <div className="flex items-center gap-4">
+                            <Avatar>
+                              <AvatarImage
+                                src={user.avatar}
+                                alt={user.name}
+                                data-ai-hint={user.avatarHint}
+                              />
+                              <AvatarFallback>
+                                {user.name
+                                  .split(' ')
+                                  .map((n) => n[0])
+                                  .join('')}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <div className="font-medium">{user.name}</div>
+                              <div className="hidden text-sm text-muted-foreground md:inline">
+                                {user.email}
+                              </div>
+                            </div>
+                          </div>
+                        </TableCell>
+                        <TableCell>{user.role}</TableCell>
+                        <TableCell>
+                          <Badge
+                            variant={getBadgeVariant(user.status) as any}
+                          >
+                            {user.status}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          {user.joined}
+                        </TableCell>
+                        <TableCell>
+                          <Button variant="outline" size="icon">
+                            <MessageSquare className="h-4 w-4" />
+                            <span className="sr-only">Message</span>
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
-      <TabsContent value="all">
+      <div className="md:col-span-1">
         <Card>
           <CardHeader>
-            <CardTitle>Leads</CardTitle>
+            <CardTitle>Contact User</CardTitle>
             <CardDescription>
-              Manage and track all incoming leads for your properties.
+              Send a message to a specific user.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="hidden sm:table-cell">
-                    <span className="sr-only">Avatar</span>
-                  </TableHead>
-                  <TableHead>Customer</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Property
-                  </TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Date
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {leads.map(lead => (
-                    <TableRow key={lead.id}>
-                        <TableCell className="hidden sm:table-cell">
-                            <Avatar>
-                                <AvatarImage src={lead.avatar} alt={lead.name} data-ai-hint={lead.avatarHint} />
-                                <AvatarFallback>{lead.name.split(' ').map(n=>n[0]).join('')}</AvatarFallback>
-                            </Avatar>
-                        </TableCell>
-                        <TableCell>
-                            <div className="font-medium">{lead.name}</div>
-                            <div className="hidden text-sm text-muted-foreground md:inline">{lead.email}</div>
-                        </TableCell>
-                        <TableCell>
-                            <Badge variant={getBadgeVariant(lead.status) as any}>{lead.status}</Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">{lead.property}</TableCell>
-                        <TableCell className="hidden md:table-cell">{lead.date}</TableCell>
-                    </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="user-email">User Email</Label>
+              <Input
+                id="user-email"
+                placeholder="user@example.com"
+                defaultValue="priya.sharma@example.com"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea
+                id="message"
+                placeholder="Type your message here."
+                className="min-h-[150px]"
+              />
+            </div>
           </CardContent>
+          <CardFooter>
+            <Button className="w-full">Send Message</Button>
+          </CardFooter>
         </Card>
-      </TabsContent>
-    </Tabs>
+      </div>
+    </div>
   );
 }

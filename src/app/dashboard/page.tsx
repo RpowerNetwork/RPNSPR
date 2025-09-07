@@ -55,13 +55,11 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Gross Revenue
-            </CardTitle>
+            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
+            <div className="text-2xl font-bold">₹4,52,31,890</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -69,11 +67,11 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">New Leads</CardTitle>
+            <CardTitle className="text-sm font-medium">New Users</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+23</div>
+            <div className="text-2xl font-bold">+2350</div>
             <p className="text-xs text-muted-foreground">
               +180.1% from last month
             </p>
@@ -81,12 +79,14 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Properties Listed</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Properties Sold
+            </CardTitle>
             <Building2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">+2 from last month</p>
+            <div className="text-2xl font-bold">+12,234</div>
+            <p className="text-xs text-muted-foreground">+19% from last month</p>
           </CardContent>
         </Card>
         <Card>
@@ -129,15 +129,19 @@ export default function DashboardPage() {
         </Card>
         <Card className="xl:col-span-3">
           <CardHeader>
-            <CardTitle>Recent Inquiries</CardTitle>
+            <CardTitle>Recent Sales</CardTitle>
             <CardDescription>
-              You got 5 new inquiries this week.
+              You made 265 sales this month.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-8">
             <div className="flex items-center gap-4">
               <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://picsum.photos/100?random=11" alt="Avatar" data-ai-hint="person smiling" />
+                <AvatarImage
+                  src="https://picsum.photos/100?random=11"
+                  alt="Avatar"
+                  data-ai-hint="person smiling"
+                />
                 <AvatarFallback>OM</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
@@ -148,11 +152,15 @@ export default function DashboardPage() {
                   olivia.martin@email.com
                 </p>
               </div>
-              <div className="ml-auto font-medium">+$1,999.00</div>
+              <div className="ml-auto font-medium">+₹1,99,900</div>
             </div>
             <div className="flex items-center gap-4">
               <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://picsum.photos/100?random=12" alt="Avatar" data-ai-hint="man portrait"/>
+                <AvatarImage
+                  src="https://picsum.photos/100?random=12"
+                  alt="Avatar"
+                  data-ai-hint="man portrait"
+                />
                 <AvatarFallback>JL</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
@@ -163,11 +171,15 @@ export default function DashboardPage() {
                   jackson.lee@email.com
                 </p>
               </div>
-              <div className="ml-auto font-medium">+39.00</div>
+              <div className="ml-auto font-medium">+₹39,000</div>
             </div>
             <div className="flex items-center gap-4">
               <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://picsum.photos/100?random=13" alt="Avatar" data-ai-hint="woman portrait"/>
+                <AvatarImage
+                  src="https://picsum.photos/100?random=13"
+                  alt="Avatar"
+                  data-ai-hint="woman portrait"
+                />
                 <AvatarFallback>IN</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
@@ -178,7 +190,7 @@ export default function DashboardPage() {
                   isabella.nguyen@email.com
                 </p>
               </div>
-              <div className="ml-auto font-medium">+$299.00</div>
+              <div className="ml-auto font-medium">+₹2,99,000</div>
             </div>
           </CardContent>
         </Card>

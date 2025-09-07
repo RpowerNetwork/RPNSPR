@@ -104,7 +104,8 @@ export default function DashboardLayout({
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
             <h1 className="text-lg font-semibold">
-              {navItems.find((item) => item.href === pathname)?.label || 'Settings'}
+              {navItems.find((item) => item.href === pathname)?.label ||
+                'Settings'}
             </h1>
           </div>
           <div className="flex items-center gap-4">
@@ -116,8 +117,11 @@ export default function DashboardLayout({
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://picsum.photos/100" data-ai-hint="person portrait" />
-                    <AvatarFallback>JD</AvatarFallback>
+                    <AvatarImage
+                      src="https://picsum.photos/100"
+                      data-ai-hint="person portrait"
+                    />
+                    <AvatarFallback>AD</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
@@ -125,7 +129,10 @@ export default function DashboardLayout({
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href="/dashboard/settings" className="flex items-center">
+                  <Link
+                    href="/dashboard/settings"
+                    className="flex items-center"
+                  >
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Link>

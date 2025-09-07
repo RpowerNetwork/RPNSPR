@@ -16,7 +16,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import Image from 'next/image';
 
 const properties = [
@@ -24,7 +30,7 @@ const properties = [
     id: 'prop1',
     name: 'Sunnyvale Apartment',
     status: 'Published',
-    price: 207500,
+    price: 12075000,
     inquiries: 12,
     image: 'https://picsum.photos/100?random=21',
     imageHint: 'apartment exterior india',
@@ -33,7 +39,7 @@ const properties = [
     id: 'prop2',
     name: 'Downtown Office Space',
     status: 'Draft',
-    price: 664000,
+    price: 3664000,
     inquiries: 0,
     image: 'https://picsum.photos/100?random=22',
     imageHint: 'office building india',
@@ -51,7 +57,7 @@ const properties = [
     id: 'prop4',
     name: 'Retail Storefront',
     status: 'Published',
-    price: 456500,
+    price: 4565000,
     inquiries: 2,
     image: 'https://picsum.photos/100?random=24',
     imageHint: 'storefront india',
@@ -74,16 +80,16 @@ export default function ListingsPage() {
 
   return (
     <div className="space-y-6">
-        <div className="flex items-center justify-between">
-            <div>
-                <h2 className="text-2xl font-bold tracking-tight">My Properties</h2>
-                <p className="text-muted-foreground">Manage your property listings.</p>
-            </div>
-            <Button>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                Add Property
-            </Button>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight">Properties</h2>
+          <p className="text-muted-foreground">Manage all property listings.</p>
         </div>
+        <Button>
+          <PlusCircle className="mr-2 h-4 w-4" />
+          Add Property
+        </Button>
+      </div>
       <Card>
         <CardContent className="p-0">
           <Table>
@@ -95,7 +101,9 @@ export default function ListingsPage() {
                 <TableHead>Name</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="hidden md:table-cell">Price</TableHead>
-                <TableHead className="hidden md:table-cell">Inquiries</TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Inquiries
+                </TableHead>
                 <TableHead>
                   <span className="sr-only">Actions</span>
                 </TableHead>
