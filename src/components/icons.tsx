@@ -4,32 +4,56 @@ export const Icons = {
   logo: (props: SVGProps<SVGSVGElement>) => (
     <svg
       {...props}
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      viewBox="0 0 160 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <text
+        x="0"
+        y="32"
+        fontFamily="sans-serif"
+        fontSize="30"
+        fontWeight="bold"
+        fill="currentColor"
+      >
+        RPNSP
+      </text>
       <path
-        d="M12 2L2 7L12 12L22 7L12 2Z"
+        d="M96 34V14"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M2 17L12 22L22 17"
+        d="M110 34V14"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M2 12L12 17L22 12"
+        d="M118 34V14"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+      <path
+        d="M103 6 L124 6 L124 14"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path
+        d="M113.5 1 L130 6"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
       />
     </svg>
   ),
