@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   Building2,
@@ -35,6 +35,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useEffect, useState } from 'react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -43,12 +44,39 @@ const navItems = [
   { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
 ];
 
+// This is a mock authentication check.
+// In a real application, you'd use a proper auth provider.
+const useAdminAuth = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    // For demonstration, we'll assume the user is the admin.
+    // In a real app, you would get this from your auth state.
+    const userEmail = 'RpowerNetwork@gmail.com'; // Replace with actual logged-in user email
+    
+    if (userEmail !== 'RpowerNetwork@gmail.com') {
+      router.push('/');
+    } else {
+      setIsAdmin(true);
+    }
+  }, [router]);
+
+  return isAdmin;
+};
+
+
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const isAdmin = useAdminAuth();
+
+  if (!isAdmin) {
+    return null; // or a loading spinner
+  }
 
   return (
     <SidebarProvider>
