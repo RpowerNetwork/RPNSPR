@@ -52,12 +52,13 @@ const userNavItems = [
 ];
 
 
-const useAuth = () => {
+export const useAuth = () => {
   const [auth, setAuth] = useState<{
     isLoading: boolean;
     isLoggedIn: boolean;
     isAdmin: boolean;
-  }>({ isLoading: true, isLoggedIn: false, isAdmin: false });
+    user: { email: string | null }
+  }>({ isLoading: true, isLoggedIn: false, isAdmin: false, user: { email: null } });
   const router = useRouter();
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const useAuth = () => {
       router.push('/auth/signin');
     } else {
         const isAdmin = userEmail === 'RpowerNetwork@gmail.com';
-        setAuth({ isLoading: false, isLoggedIn: true, isAdmin });
+        setAuth({ isLoading: false, isLoggedIn: true, isAdmin, user: { email: userEmail } });
     }
   }, [router]);
 
@@ -83,8 +84,12 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const auth = useAuth();
-  const navItems = auth.isAdmin ? adminNavItems : userNavItems;
   const router = useRouter();
+  
+  const navItems = auth.isAdmin ? adminNavItems : userNavItems;
+  const pageTitle = navItems.find((item) => pathname.startsWith(item.href))?.label ||
+                (pathname === '/dashboard/settings' ? 'Settings' : 'Dashboard');
+
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
@@ -154,8 +159,7 @@ export default function DashboardLayout({
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
             <h1 className="text-lg font-semibold">
-              {navItems.find((item) => pathname.startsWith(item.href))?.label ||
-                'Settings'}
+              {pageTitle}
             </h1>
           </div>
           <div className="flex items-center gap-4">
@@ -171,7 +175,9 @@ export default function DashboardLayout({
                       src="https://picsum.photos/100"
                       data-ai-hint="person portrait"
                     />
-                    <AvatarFallback>U</AvatarFallback>
+                    <AvatarFallback>
+                      {auth.user.email ? auth.user.email.charAt(0).toUpperCase() : 'U'}
+                    </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
@@ -186,10 +192,6 @@ export default function DashboardLayout({
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>

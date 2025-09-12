@@ -1,5 +1,6 @@
 
-import { File, ListFilter, MessageSquare, PlusCircle } from 'lucide-react';
+'use client';
+import { File, ListFilter, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -31,6 +32,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import { useAuth } from '../layout';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const users = [
   {
@@ -86,6 +90,17 @@ const users = [
 ];
 
 export default function UsersPage() {
+  const auth = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Redirect non-admin users away from this page
+    if (!auth.isLoading && !auth.isAdmin) {
+      router.push('/dashboard');
+    }
+  }, [auth, router]);
+
+
   const getBadgeVariant = (status: string) => {
     switch (status) {
       case 'Active':
@@ -96,6 +111,11 @@ export default function UsersPage() {
         return 'outline';
     }
   };
+
+  // Render nothing or a loading state while checking auth
+  if (auth.isLoading || !auth.isAdmin) {
+    return null;
+  }
 
   return (
     <div className="grid gap-6 md:grid-cols-3">

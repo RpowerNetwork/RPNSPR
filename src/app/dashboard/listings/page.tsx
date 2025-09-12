@@ -1,3 +1,5 @@
+
+'use client';
 import { PlusCircle, MoreHorizontal } from 'lucide-react';
 import {
   Table,
@@ -24,8 +26,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Image from 'next/image';
+import { useAuth } from '../layout';
 
-const properties = [
+
+const adminProperties = [
   {
     id: 'prop1',
     name: 'Sunnyvale Apartment',
@@ -64,7 +68,35 @@ const properties = [
   },
 ];
 
+
+const userProperties = [
+    {
+      id: 'prop1',
+      name: 'My Downtown Apartment',
+      status: 'Published',
+      price: 37350000,
+      inquiries: 12,
+      image: 'https://picsum.photos/100?random=1',
+      imageHint: 'modern apartment india',
+    },
+    {
+      id: 'prop2',
+      name: 'Vacation Home Listing',
+      status: 'Draft',
+      price: 207500,
+      inquiries: 0,
+      image: 'https://picsum.photos/100?random=2',
+      imageHint: 'suburban house india',
+    },
+  ];
+
 export default function ListingsPage() {
+  const auth = useAuth();
+  const properties = auth.isAdmin ? adminProperties : userProperties;
+  const pageTitle = auth.isAdmin ? 'All Properties' : 'My Properties';
+  const pageDescription = auth.isAdmin ? 'Manage all property listings on the platform.' : 'Manage your personal property listings.';
+
+
   const getBadgeVariant = (status: string) => {
     switch (status) {
       case 'Published':
@@ -82,8 +114,8 @@ export default function ListingsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Properties</h2>
-          <p className="text-muted-foreground">Manage all property listings.</p>
+          <h2 className="text-2xl font-bold tracking-tight">{pageTitle}</h2>
+          <p className="text-muted-foreground">{pageDescription}</p>
         </div>
         <Button>
           <PlusCircle className="mr-2 h-4 w-4" />
@@ -124,7 +156,7 @@ export default function ListingsPage() {
                   </TableCell>
                   <TableCell className="font-medium">{property.name}</TableCell>
                   <TableCell>
-                    <Badge variant={getBadgeVariant(property.status)}>
+                    <Badge variant={getBadgeVariant(property.status) as any}>
                       {property.status}
                     </Badge>
                   </TableCell>
