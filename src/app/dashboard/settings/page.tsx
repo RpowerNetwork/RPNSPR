@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,8 +13,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
+import { useAuth } from '../layout';
 
 export default function SettingsPage() {
+  const auth = useAuth();
+
   return (
     <div className="space-y-6">
       <div>
@@ -24,22 +29,22 @@ export default function SettingsPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Admin Profile</CardTitle>
+            <CardTitle>Profile</CardTitle>
             <CardDescription>
-              This is your administrator profile.
+              This is your personal profile information.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" defaultValue="Admin" />
+              <Input id="name" defaultValue={auth.isAdmin ? "Admin" : "User"} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                defaultValue="RpowerNetwork@gmail.com"
+                defaultValue={auth.user.email || ""}
                 disabled
               />
             </div>
@@ -48,23 +53,27 @@ export default function SettingsPage() {
             <Button>Save Changes</Button>
           </CardFooter>
         </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Global Announcement</CardTitle>
-            <CardDescription>
-              Broadcast a message to all users.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              placeholder="Enter your announcement here..."
-              className="min-h-[100px]"
-            />
-          </CardContent>
-          <CardFooter className="flex justify-end">
-            <Button>Broadcast to All Users</Button>
-          </CardFooter>
-        </Card>
+
+        {auth.isAdmin && (
+           <Card>
+            <CardHeader>
+              <CardTitle>Global Announcement</CardTitle>
+              <CardDescription>
+                Broadcast a message to all users.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Textarea
+                placeholder="Enter your announcement here..."
+                className="min-h-[100px]"
+              />
+            </CardContent>
+            <CardFooter className="flex justify-end">
+              <Button>Broadcast to All Users</Button>
+            </CardFooter>
+          </Card>
+        )}
+
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Notifications</CardTitle>
@@ -73,18 +82,20 @@ export default function SettingsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between space-x-2">
-              <Label
-                htmlFor="new-user-email"
-                className="flex flex-col space-y-1"
-              >
-                <span>New User Registration</span>
-                <span className="font-normal leading-snug text-muted-foreground">
-                  Receive an email for every new user.
-                </span>
-              </Label>
-              <Switch id="new-user-email" defaultChecked />
-            </div>
+            {auth.isAdmin && (
+                <div className="flex items-center justify-between space-x-2">
+                    <Label
+                        htmlFor="new-user-email"
+                        className="flex flex-col space-y-1"
+                    >
+                        <span>New User Registration</span>
+                        <span className="font-normal leading-snug text-muted-foreground">
+                        Receive an email for every new user.
+                        </span>
+                    </Label>
+                    <Switch id="new-user-email" defaultChecked />
+                </div>
+            )}
             <div className="flex items-center justify-between space-x-2">
               <Label
                 htmlFor="daily-summary"
@@ -96,6 +107,18 @@ export default function SettingsPage() {
                 </span>
               </Label>
               <Switch id="daily-summary" />
+            </div>
+             <div className="flex items-center justify-between space-x-2">
+              <Label
+                htmlFor="newsletter"
+                className="flex flex-col space-y-1"
+              >
+                <span>Newsletter</span>
+                <span className="font-normal leading-snug text-muted-foreground">
+                  Receive our weekly property newsletter.
+                </span>
+              </Label>
+              <Switch id="newsletter" defaultChecked/>
             </div>
           </CardContent>
           <CardFooter>
