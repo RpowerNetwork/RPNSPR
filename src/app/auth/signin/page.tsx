@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -59,19 +60,15 @@ export default function SignInPage() {
     console.log(values);
     setIsLoading(false);
     
-    if (values.email === 'RpowerNetwork@gmail.com') {
-      toast({
-        title: 'Signed In!',
-        description: 'Welcome back, Admin.',
-      });
-      router.push('/dashboard');
-    } else {
-       toast({
+    // In a real app, you'd get a token and user details from the API
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userEmail', values.email);
+
+    toast({
         title: 'Signed In!',
         description: 'Welcome back.',
-      });
-      router.push('/');
-    }
+    });
+    router.push('/dashboard');
   }
 
   return (

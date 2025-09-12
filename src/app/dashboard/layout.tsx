@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -36,34 +37,42 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useEffect, useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
-const navItems = [
+const adminNavItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/listings', label: 'My Properties', icon: Building2 },
-  { href: '/dashboard/leads', label: 'Leads', icon: Users },
+  { href: '/dashboard/listings', label: 'All Properties', icon: Building2 },
+  { href: '/dashboard/leads', label: 'All Users', icon: Users },
   { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
 ];
 
-// This is a mock authentication check.
-// In a real application, you'd use a proper auth provider.
-const useAdminAuth = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
+const userNavItems = [
+    { href: '/dashboard', label: 'My Dashboard', icon: LayoutDashboard },
+    { href: '/dashboard/listings', label: 'My Properties', icon: Building2 },
+];
+
+
+const useAuth = () => {
+  const [auth, setAuth] = useState<{
+    isLoading: boolean;
+    isLoggedIn: boolean;
+    isAdmin: boolean;
+  }>({ isLoading: true, isLoggedIn: false, isAdmin: false });
   const router = useRouter();
 
   useEffect(() => {
-    // For this demo, we'll use a hardcoded value. In a real app,
-    // this would come from your authentication context after login.
-    // We'll simulate a non-admin user to test the redirection.
-    const loggedInUserEmail = "user@example.com"; // Change this to 'RpowerNetwork@gmail.com' to see the admin view
-
-    if (loggedInUserEmail !== 'RpowerNetwork@gmail.com') {
-      router.push('/');
+    const loggedInStatus = localStorage.getItem('isLoggedIn');
+    const userEmail = localStorage.getItem('userEmail');
+    
+    if (loggedInStatus !== 'true') {
+      router.push('/auth/signin');
     } else {
-      setIsAdmin(true);
+        const isAdmin = userEmail === 'RpowerNetwork@gmail.com';
+        setAuth({ isLoading: false, isLoggedIn: true, isAdmin });
     }
   }, [router]);
 
-  return isAdmin;
+  return auth;
 };
 
 
@@ -73,13 +82,20 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isAdmin = useAdminAuth();
+  const auth = useAuth();
+  const navItems = auth.isAdmin ? adminNavItems : userNavItems;
+  const router = useRouter();
 
-  if (!isAdmin) {
-    // You can return a loading spinner here while the auth check is in progress
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    router.push('/');
+  }
+
+  if (auth.isLoading) {
     return (
         <div className="flex h-screen items-center justify-center">
-            <p>Loading...</p>
+            <Loader2 className="h-8 w-8 animate-spin" />
         </div>
     );
   }
@@ -125,7 +141,7 @@ export default function DashboardLayout({
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Logout">
+              <SidebarMenuButton tooltip="Logout" onClick={handleLogout}>
                 <LogOut />
                 <span>Logout</span>
               </SidebarMenuButton>
@@ -138,7 +154,7 @@ export default function DashboardLayout({
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
             <h1 className="text-lg font-semibold">
-              {navItems.find((item) => item.href === pathname)?.label ||
+              {navItems.find((item) => pathname.startsWith(item.href))?.label ||
                 'Settings'}
             </h1>
           </div>
@@ -155,7 +171,7 @@ export default function DashboardLayout({
                       src="https://picsum.photos/100"
                       data-ai-hint="person portrait"
                     />
-                    <AvatarFallback>AD</AvatarFallback>
+                    <AvatarFallback>U</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
@@ -176,7 +192,7 @@ export default function DashboardLayout({
                   Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
                 </DropdownMenuItem>
