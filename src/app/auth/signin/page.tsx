@@ -58,11 +58,20 @@ export default function SignInPage() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log(values);
     setIsLoading(false);
-    toast({
-      title: 'Signed In!',
-      description: 'Welcome back.',
-    });
-    router.push('/dashboard');
+    
+    if (values.email === 'RpowerNetwork@gmail.com') {
+      toast({
+        title: 'Signed In!',
+        description: 'Welcome back, Admin.',
+      });
+      router.push('/dashboard');
+    } else {
+       toast({
+        title: 'Signed In!',
+        description: 'Welcome back.',
+      });
+      router.push('/');
+    }
   }
 
   return (
