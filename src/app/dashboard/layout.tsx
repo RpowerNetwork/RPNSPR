@@ -51,11 +51,12 @@ const useAdminAuth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // For demonstration, we'll assume the user is the admin.
-    // In a real app, you would get this from your auth state.
-    const userEmail = 'RpowerNetwork@gmail.com'; // Replace with actual logged-in user email
-    
-    if (userEmail !== 'RpowerNetwork@gmail.com') {
+    // For this demo, we'll use a hardcoded value. In a real app,
+    // this would come from your authentication context after login.
+    // We'll simulate a non-admin user to test the redirection.
+    const loggedInUserEmail = "user@example.com"; // Change this to 'RpowerNetwork@gmail.com' to see the admin view
+
+    if (loggedInUserEmail !== 'RpowerNetwork@gmail.com') {
       router.push('/');
     } else {
       setIsAdmin(true);
@@ -75,7 +76,12 @@ export default function DashboardLayout({
   const isAdmin = useAdminAuth();
 
   if (!isAdmin) {
-    return null; // or a loading spinner
+    // You can return a loading spinner here while the auth check is in progress
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <p>Loading...</p>
+        </div>
+    );
   }
 
   return (
